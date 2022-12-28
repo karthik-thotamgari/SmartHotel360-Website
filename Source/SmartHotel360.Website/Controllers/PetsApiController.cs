@@ -36,17 +36,17 @@ namespace SmartHotel360.PublicWeb.Controllers
 
         public void DoSomethingBad(HttpContext ctx, string employeeName)
         {
-            //XML Injection vulnerability
-            // using (XmlWriter writer = XmlWriter.Create("employees.xml"))
-            //{
-            //    writer.WriteStartDocument();
+            XML Injection vulnerability
+            using (XmlWriter writer = XmlWriter.Create("employees.xml"))
+            {
+               writer.WriteStartDocument();
 
-            //    // BAD: Insert user input directly into XML
-            //    writer.WriteRaw("<employee><name>" + employeeName + "</name></employee>");
+               // BAD: Insert user input directly into XML
+               writer.WriteRaw("<employee><name>" + employeeName + "</name></employee>");
 
-            //    writer.WriteEndElement();
-            //    writer.WriteEndDocument();
-            //}
+               writer.WriteEndElement();
+               writer.WriteEndDocument();
+            }
 
             //Hardcoded pwd
             string password = ctx.Request.Query["password"];
